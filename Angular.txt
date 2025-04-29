@@ -53,6 +53,48 @@ ng generate component login
 
 
 
+Binding in Angular:
+====================
+
+Interpolation/one-way data binding:
+=====================================
+
+one way binding we can get the data from the component(ts)==>template(html)
+
+{{propertyName}}
+
+
+event binding:
+==============
+event -> when click on button ,action should be performed .
+
+syntax:
+=======
+
+(eventName)
+
+property binding:
+==================
+
+syntax:
+=======
+[propertyName]
+
+ex:
+====
+<p [style.color]="propertyName"  ></p>
+
+
+Two-way data binding:
+======================
+
+1)we need to import FormsModule -> @angular/forms 
+2) we need to use:
+
+[(ngModel)]="propertyName";
+
+
+
 
 
 
