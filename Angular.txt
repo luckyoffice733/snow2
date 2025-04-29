@@ -1,0 +1,72 @@
+What is SPA ?
+
+An application that loads all content on a single HTML page.
+
+Note:--
+
+in angular once project is created --> index.html 
+
+
+Install the angular:
+======================
+npm install -g @angular/cli
+
+
+how to check the installed or not:
+==================================
+ng version
+
+
+How to create the angular project:
+=====================================
+syntax:
+-------
+ng new projectName ;
+
+ex:
+----
+create an angular project named as myApp
+
+ng new myApp;
+
+
+once project is created :
+==========================
+cd myApp;
+
+path myApp> ng serve
+
+
+By default if we create any angular project by default we get app module
+->src->app>---> app.component.ts
+                app.component.css
+                app.component.spec.ts
+                app.component.html
+
+
+to create the component in angular:
+===================================
+
+using angular cli
+
+ng generate component login
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
