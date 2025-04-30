@@ -29,8 +29,42 @@
 
 </div>
 
+<hr>
+<h1>Working Structural Directives</h1>
 
+<p *ngIf="isVisible">Hello WOrking with ngIf directive</p>
 
+<input type="button" value="show" (click)="show()">
+<input type="button" value="hide" (click)="hide()">
+<br>
+<!--property binding-->
+<div *ngIf="isDisplayed">
+<img [src]="imgUrl" alt="Image Not Found" width="100" height="100">
+</div>
 
+<!--ng For-->
+<h1>Fruits List</h1>
+<ul *ngFor="let ft of fruits">
+    <li>{{ft}}</li>
+</ul>
+
+<h1>Employee Details</h1>
+<table border="2px">
+    <tr><th>EmpId</th><th>EmployeeName</th><th>EmployeeSalary</th></tr>
+    <tr *ngFor="let emp of employees">
+        <td>{{emp.empId}}</td>
+        <td>{{emp.empName}}</td>
+        <td>{{emp.sal}}</td>
+    </tr>
+</table>
+
+<!--switch case-->
+
+<div [ngSwitch]="traffic">
+   <p *ngSwitchCase="'red'">Stop the vehicles</p>
+   <p *ngSwitchCase="'yellow'">Get Ready For Start/Stop</p>
+   <p *ngSwitchCase="'green'">Start and Go</p>
+   <p *ngSwitchDefault>Invalid Color/Invalid Expression</p>
+</div>
 
 <router-outlet />
