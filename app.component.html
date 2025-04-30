@@ -1,0 +1,36 @@
+<h1>Welcome to Angular Framework</h1>
+
+
+
+
+<p>{{message}}</p>
+
+<p>{{10+20}}</p>
+
+<p [style.color]="txtColor">Welcome</p>
+
+
+<input type="button" value="submit" (click)="display()">
+<hr>
+
+<div>
+   
+    <form>
+    <label>FirstName</label>
+    <input type="text" name="firstName" [(ngModel)]="firstName" > <br>
+
+    <label>LastName</label>
+    <input type="text" name="lastName"  [(ngModel)]="lastName" > <br>
+
+    </form>
+ <hr>
+ <p>{{firstName}}</p>
+ <p>{{lastName}}</p>
+
+</div>
+
+
+
+
+
+<router-outlet />
