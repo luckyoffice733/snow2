@@ -1,0 +1,201 @@
+when we are working with Angular 17,18,19 -> 
+Directives -(ngIf,ngFor,Style,ngClass,ngSwtich) --> import CommonModule from @angular/common
+Pipes -> import CommonModule from @angular/common
+
+but in angular 5 to 16 versions --> by default common/core is imported
+=========================================================================
+CustomPipe must be registered in app.module.ts under declaration [] --angular 5,----16 version
+
+but in Angular 17,18,19
+
+we need to import customepipe in components classes registered imports[];
+
+
+
+===============
+
+Pipes is a function in angular used to format the data dynamically. - Technically pipe are derived from pipe transform defined in “angular/core” library. - Pipe uses a “transform ( )” which takes input of any value dynamically, transform the 
+value into specified format and return to view . - The metadata of a pipe is defined by using the directive @pipe ( ) - The predefined pipes available in angular library are 
+
+Uppercase 
+Lowercase 
+Number 
+Currency 
+Percent 
+Date
+Slice …..etc 
+
+1. Uppercase and lowercase: - 
+- These are the angular pipe used to convert the string into uppercase and lowercase  letters 
+- Syntax: 
+-    public msg="Welcome"; 
+    <div>{{msg | uppercase}}</div> 
+- Output: -  WELCOME 
+
+- Angular pipe are defined with parameter the parameterize pipes will accept parameter by 
+using the separator colon (:) you can concatenate multiple pipes by using pipes symbol ‘|’ 
+- Syntax: - 
+{{ data | pipeName : params | pipeName……  }} 
+
+
+2. Number / decimal:- - These are the used to display numeric value with thousand separator and decimal places. 
+
+- It requires the parameter with specified the number of factions. 
+- Syntax: - 
+{{ expression | number : ‘decimalplaces.min-max’ }}
+
+
+3. Currency: - - It is an angular pipe similar to number but can display a numeric value. With decimal 
+places and currency symbol. 
+
+- Syntax: - 
+{{expression | currency : ‘symbol’ : ‘decimalplaces.min-max’}} 
+
+- Example:- 
+    public price = 42000.50; 
+    <dt>Price</dt> 
+    <dd>{{price}}</dd>                          // 42000.5 
+    <dd>{{price | currency}}</dd>               // $42,000.50 
+    <dd>{{price | currency : 'INR'}}</dd>       //₹42,000.50 
+    <dd>{{price | currency : '&#8377;'}}</dd>   //₹42,000.50
+
+4. Date pipe : - - It is an angular filter used to display the data value in a specific date format which 
+includes both short date and long date. 
+
+- Syntax: - 
+{{ expression | date : ‘format’ }} 
+
+- Predefined format string  
+
+Short 
+Long 
+Medium 
+
+- Predefined format style: - 
+M - Month number single digit  
+MM - Month number 2 digit 
+MMM - Month number short format 
+MMMM - Month number long format 
+d - Day number single digit 
+dd - Day number 2 digit 
+yy - Year number 2 digit 
+yyyy - Year number 4 digits
+
+ Example:- 
+mfd = new Date("01/02/2020")  
+<dt>Date</dt> 
+<dd>{{mfd | date}}</dd>               //Jan 2, 2020 
+<dd>{{mfd | date : 'long'}}</dd>      //January 2, 2020 at 12:00:00 AM GMT+5 
+<dd>{{mfd | date : 'd MMMM yyyy'}}</dd> //2 January 2020
+
+
+5. Percent pipe: - - It is an angular pipe used to display numeric value in percent format by using percent 
+symbol. It can also used the parameter that specified decimal places and fraction. 
+
+- Syntax: - 
+{{ expression | date : ‘format’ }} - Example: - 
+
+sale = 0.265; 
+<dt>Sale</dt> 
+<dd>{{sale | percent}}</dd>  //27% 
+
+6. Slice: - - It is an angular pipe used to slice any string based on specified index value. - Syntax: - 
+{{ string | slice : start Index : end Index }} 
+- Example: - 
+  msg= "Welcome to Angular" 
+
+<dt>Slice</dt> 
+<dd>{{msg | slice:0:14}}</dd> 
+
+- You can create custom pipe by implementing pipe transform and configuration your own 
+functionality by using “transform ( )” 
+- Example: 1- Angular pipe 
+- Example: 2- Sentence case 
+- Example: 3- Title case 
+
+Example:
+-------
+Any Component:
+================
+
+msg=' Angular'; 
+price = 42000.50; 
+mfd = new Date("01/02/2020")  
+sale = 0.265; 
+slice= 'Welcome to Angular';
+
+
+
+html:
+======
+<div class="container"> 
+    <dl> 
+        <dt>Name</dt> 
+        <dd>uppercase: {{msg | uppercase}}</dd> 
+        <dd>lowercase:{{msg | lowercase}}</dd> 
+        <dt>Price</dt> 
+        <dd>currenct:-{{price | currency}}</dd> 
+        <dd>INR:-{{price | currency : 'INR'}}</dd> 
+        <dd>HTML:-{{price | currency : '&#8377;'}}</dd> 
+        <dt>Date</dt> 
+        <dd>{{mfd | date}}</dd>          
+        <dd>{{mfd | date : 'long'}}</dd> 
+        <dd>{{mfd | date : 'd MMMM yyyy'}}</dd> 
+        <dt>Sale</dt> 
+        <dd>{{sale | percent}}</dd>  
+        <dt>Slice</dt> 
+        <dd>{{slice | slice:0:7}}</dd> 
+    </dl> 
+</div>
+
+
+EX.2: Step in angular 16->
+========== 
+- custom pipe (sentencecase) 
+
+1. Add a new file into “app” folder by name 
+“sentencecase.pipe.ts” 
+
+2. Sentencecase.pipe.ts 
+
+import { Pipe, PipeTransform } from '@angular/core'; 
+@Pipe({ 
+    name:'sentencecase' 
+}) 
+export class SentenceCasePipe implements PipeTransform{ 
+    transform(str){ //welcome
+        let firstChar=str.charAt(0); 
+        let restChars=str.substring(1); 
+        let sentence=firstChar.toUpperCase()+ restChars.toLowerCase(); 
+        return sentence; 
+    } 
+} 
+
+3. Register pipe in “app.module.ts”
+
+ declarations: [ 
+    SentenceCasePipe, 
+  ], 
+
+
+4)Implement in your page 
+msg=' welcome to angular'; 
+{{msg | sentancecase}} 
+
+
+
+5) create a custom pipe welcomepipe which return the welcome +yourinputname.
+
+
+
+
+
+Create a custom pipe to convert the videoduration into minutes
+ex:
+----
+videoduration=150
+pipename is duration 
+
+
+{{videoduration|duration}}  --> 2hrs 30minutes
+
