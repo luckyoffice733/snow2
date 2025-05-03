@@ -187,15 +187,46 @@ msg=' welcome to angular';
 5) create a custom pipe welcomepipe which return the welcome +yourinputname.
 
 
+create a custom pipe ,when we pass a string it has to print welcome "string" -->custStr
+
+ 
+{{Sravan|custStr}}  --> welcome sravan
+
+================================================================
+
+ng generate pipe welcome
+===>
+
+welcome.pipe.ts
+----------------
+transform(value:any): string{
+    return "welcome "+value;
+  }
 
 
+ng generate pipe squareRoot
+--->
 
-Create a custom pipe to convert the videoduration into minutes
-ex:
-----
-videoduration=150
-pipename is duration 
+square-root.pipe.ts:
+====================
+
+ transform(value:number):number{
+    return Math.sqrt(value);
+  }
 
 
-{{videoduration|duration}}  --> 2hrs 30minutes
+app.component.ts:
+===================
 
+  imports: [RouterOutlet,CommonModule,WelcomePipe,SquareRootPipe]
+
+       name="sravan";
+     num=625;
+  
+app.component.html:
+===================
+<hr>
+<p>working with custom pipe</p>
+{{name|custStr}} 
+<br>
+<p>squareRoot of number is : {{num|squareRoot}}</p>
