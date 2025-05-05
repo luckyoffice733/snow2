@@ -1,0 +1,30 @@
+A simple exercise for understanding Angular Reactive Forms could involve building a basic 
+contact form with fields for 
+first name, last name, email, and phone number. 
+This form would then be able to display the entered data on submit. 
+
+The key is to define the form structure using FormGroup, FormControl, and to bind the template to these controls. 
+
+Note
+====
+create a component -> named as  -> contact
+
+validations:
+------------
+first name and last name is required,minlength should be 6 characters
+
+email ==> required,email
+
+phone number ==>requires, validate the phoneNumber it must contain 10 digits
+
+
+Display:
+=========
+Display the errors message in red color
+and if form is not valid disabled the submit button:
+
+if form is valid display the details,
+FirstName
+lastName
+email
+phoneNumber on the template
