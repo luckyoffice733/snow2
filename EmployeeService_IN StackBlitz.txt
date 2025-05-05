@@ -1,0 +1,104 @@
+1) create the component
+
+ng generate component employee
+
+
+2)main.ts
+
+template:
+----------
+<app-employee></app-employee>
+
+
+3)create the service
+
+ng generate service employee
+
+
+4)create the class
+
+ng generate class employee
+
+employee.ts:
+============
+export class Employee {
+  empId: number;
+  empName: string;
+  empSal: number;
+
+  constructor(empId: number, empName: string, empSal: number) {
+    this.empId = empId;
+    this.empName = empName;
+    this.empSal = empSal;
+  }
+}
+
+
+===
+employee.service.ts:
+----------------------
+import { Injectable } from '@angular/core';
+import { Employee } from './employee';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class EmployeeService {
+  constructor() {}
+
+  empData: Employee[] = [
+    { empId: 1212, empName: 'naman', empSal: 43434 },
+    { empId: 4232, empName: 'harshit', empSal: 39430 },
+    { empId: 5343, empName: 'rohit', empSal: 23233 },
+  ];
+
+  getEmployeeDetails(): any {
+    return this.empData;
+  }
+}
+
+
+employee.component.ts:
+-----------------------
+import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../employee.service';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-employee',
+  imports: [CommonModule],
+  templateUrl: './employee.component.html',
+  styleUrl: './employee.component.css',
+})
+export class EmployeeComponent implements OnInit {
+  eData: any[] = [];
+
+  constructor(private empService: EmployeeService) {}
+
+  ngOnInit(): void {
+    this.eData = this.empService.getEmployeeDetails();
+  }
+}
+
+
+
+employee.component.html:
+=========================
+<p>employee works!</p>
+<h1>Working with Service in Angular</h1>
+
+<table border="2px">
+  <tr *ngFor="let e of eData">
+    <td>{{ e.empId }}</td>
+    <td>{{ e.empName }}</td>
+    <td>{{ e.empSal }}</td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+

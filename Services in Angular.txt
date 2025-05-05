@@ -1,0 +1,79 @@
+Services in Angular are singleton objects that provide specific functionality throughout your application. They're a fundamental building block for sharing data, logic, and external communications between components.
+
+Key Characteristics of Angular Services
+Singleton: Only one instance exists per injector
+
+Injectable: Can be injected into components, directives, pipes, and other services
+
+Reusable: Centralize common functionality to avoid code duplication
+
+Creating a Service
+You can create a service using the Angular CLI:
+
+bash
+ng generate service service-name
+Or manually:
+
+typescript
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root' // Makes it available application-wide
+})
+export class DataService {
+  constructor() { }
+
+  // Service methods
+  getData() {
+    return ['item1', 'item2', 'item3'];
+  }
+}
+Registering Services
+There are three ways to provide services:
+
+Root level (recommended for most cases):
+
+typescript
+@Injectable({
+  providedIn: 'root'
+})
+Module level:
+
+typescript
+@NgModule({
+  providers: [MyService],
+})
+Component level (creates a new instance for each component):
+
+typescript
+@Component({
+  providers: [MyService]
+})
+Injecting Services
+Services are injected via dependency injection:
+
+typescript
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-example',
+  template: `...`
+})
+export class ExampleComponent {
+  constructor(private dataService: DataService) { }
+
+  items = this.dataService.getData();
+}
+Common Use Cases for Services
+Data sharing between components
+
+API communication (HTTP requests)
+
+State management
+
+Logging services
+
+Authentication/authorization
+
+Business logic encapsulation
