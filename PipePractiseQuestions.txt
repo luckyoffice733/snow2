@@ -1,0 +1,53 @@
+Problem Solving Questions:
+==========================
+1. Format and Display Product Info
+
+You have the following product object in your component:
+
+product = {
+  name: 'Smart TV',
+  price: 799.99,
+  releaseDate: new Date(2024, 10, 5),
+  rating: 4.678
+};
+
+Task: In your component’s HTML, use Angular pipes to display:
+-------------------------------------------------------------
+The price in USD currency format.
+The release date in longDate format.
+The rating rounded to 1 decimal place.
+
+Expected Output:
+----------------
+Smart TV
+Price: $799.99
+Released: November 5, 2024
+Rating: 4.7
+
+2.Display a User’s Full Name in Title Case
+
+You have a user object:
+-----------------------
+user = {
+  firstName: 'john',
+  lastName: 'doe'
+};
+
+Task: Display the full name in title case using Angular pipes.
+
+Expected Output:
+----------------
+John Doe
+
+3.Create and Use a Custom Pipe
+
+Task: Create a custom pipe called truncate that shortens a string to a maximum length and adds "..." if it exceeds that length.
+
+sample code:
+-------------
+<!-- Use case -->
+<p>{{ 'This is a long description of a product' | truncate:20 }}</p>
+
+Expected Output:
+----------------
+This is a long descr...
